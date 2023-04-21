@@ -1,0 +1,76 @@
+.searchBox {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  background: #2f3640;
+  height: 4vw;
+  border-radius: 4vw;
+  padding: 1vw;
+  position: fixed;
+}
+
+.searchBox:hover > .searchInput {
+  width: 24vw;
+  padding: 0 0.6vw;
+}
+
+.searchBox:hover > .searchButton {
+  background: white;
+  color: #2f3640;
+}
+
+.searchButton {
+  color: white;
+  float: right;
+  width: 4vw;
+  height: 4vw;
+  border-radius: 50%;
+  background: #2f3640;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.searchInput {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: white;
+  font-size: 1.6vw;
+  transition: 0.4s;
+  line-height: 4vw;
+  width: 0vw;
+}
+/* fallback */
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2)
+    format("woff2");
+}
+
+.materialIcons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2.4vw;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media screen and (max-width: 620vw) {
+  .searchBox:hover > .searchInput {
+    width: 15vw;
+    padding: 0 0.6vw;
+  }
+}
