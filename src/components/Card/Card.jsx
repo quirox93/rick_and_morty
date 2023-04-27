@@ -1,11 +1,14 @@
+import { useState } from "react";
 import s from "./Card.module.css";
+import { Link } from "react-router-dom";
 
 const dict = {
   Alive: "Vivo",
+  Dead: "Muerto",
   Human: "Humano",
   Male: "Masculino",
   Female: "Femenino",
-  unknown: "Desconocido",
+  unknown: "?",
   "Earth (Replacement Dimension)": "Tierra (C-131)",
 };
 
@@ -13,41 +16,35 @@ const translator = (string) =>
   dict[string] || string.replace("Earth", "Tierra");
 
 export default function Card(props) {
-  let genre = s.female;
-  if (props.gender !== "Female") genre = "";
-  return (
-    <button className={`${s.card} ${genre}`}>
-      <div className={`${s.card__face} ${s.back}`}>
-        <div className={s.outer} onClick={props.onClose}>
-          <div className={s.inner}>
-            <label className={s.label}>CERRAR</label>
-          </div>
-        </div>
+  // Set Gender
+  let genre = "";
+  if (props.status === "Alive") genre = s.alive;
+  else if (props.status === "Dead") genre = s.dead;
 
-        <div className={s.textBack}>
-          <h2>{props.name.toUpperCase()}</h2>
-          <hr></hr>
-          <h2>
-            Estado: <i>{translator(props.status)}</i>
-          </h2>
-          <hr></hr>
-          <h2>
-            Especie: <i>{translator(props.species)}</i>
-          </h2>
-          <hr></hr>
-          <h2>
-            Género: <i>{translator(props.gender)}</i>
-          </h2>
-          <hr></hr>
-          <h2>
-            Origen: <i>{translator(props.origin)}</i>
-          </h2>
+  // Animacion Cerrar
+  const animationEnd = (event) => {
+    if (event.animationName.includes("slideOut")) props.onClose();
+  };
+
+  // Estados
+  const [closeClass, setCloseClass] = useState("");
+
+  // funcion Cerrar
+  const close = () => {
+    setCloseClass(s.fadeOut);
+  };
+
+  return (
+    <Link to={`/detail/${props.id}`}>
+      <div
+        className={`${s.card} ${genre} ${closeClass}`}
+        onAnimationEnd={animationEnd}
+      >
+        <div className={`${s.card__face}`}>
+          <i className={s.name}>{props.name}</i>
+          <img src={props.image} alt={props.name} />
         </div>
       </div>
-      <div className={`${s.card__face}`}>
-        <i className={s.name}>{props.name}</i>
-        <img src={props.image} alt={props.name} />
-      </div>
-    </button>
+    </Link>
   );
 }

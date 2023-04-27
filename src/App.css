@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
   background-color: rgb(30, 40, 66);
   background-image: linear-gradient(
     270deg,
@@ -10,8 +9,103 @@
     rgba(53, 201, 221, 0.25),
     rgb(30, 40, 66)
   );
-  height: 100vh;
   display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Button Container/**/
+.buttonContainer {
+  display: flex;
+  width: 100vw;
+  justify-content: space-evenly;
+}
+/* CSS */
+.button-55 {
+  transition: 0.8s ease-in-out;
+  animation: 1.5s slidein;
+  align-self: center;
+  background-color: #fff;
+  background-image: none;
+  background-position: 0 90%;
+  background-repeat: repeat no-repeat;
+  background-size: 4px 3px;
+  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+  border-style: solid;
+  border-width: 2px;
+  /*box-shadow: rgba(0, 0, 0, 0.2) 15px 28px 25px -18px;*/
+  box-sizing: border-box;
+  color: #41403e;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Neucha, sans-serif;
+  font-size: 2rem;
+  line-height: 23px;
+  outline: none;
+  padding: 0.75rem;
+  text-decoration: none;
+  transition: all 235ms ease-in-out;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+@keyframes slidein {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+.button-55:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px -5px;
+  transform: translate3d(0, 2px, 0);
+
+  box-shadow: 0 0 10px yellowgreen;
+}
+
+.button-55:focus {
+}
+/* Pantallas grandes*/
+
+@media (max-width: 1400px) {
+  html {
+    font-size: 25px;
+  }
+}
+
+/* Tabletas */
+
+@media (max-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+/* Celulares */
+
+@media (max-width: 450px) {
+  html {
+    font-size: 12px;
+  }
+}
+@font-face {
+  font-family: "Get Schwifty";
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3089507/get-schwifty.woff")
+    format("woff");
+}
+/* fallback */
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2)
+    format("woff2");
 }
