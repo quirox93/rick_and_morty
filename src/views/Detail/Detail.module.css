@@ -1,20 +1,29 @@
 .main {
   display: flex;
-  padding-left: 5vw;
-  padding-right: 5vw;
-  margin-top: 25vh;
-  margin-bottom: 1vh;
+  padding: 2rem;
   justify-content: center;
-  gap: 5vw;
+  gap: 2rem;
   align-items: center;
   flex-wrap: wrap;
   color: aliceblue;
-  font-size: 0.7rem;
+  font-size: 1rem;
   background-color: rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
+  border-radius: 1rem;
+  animation: slidein 1s;
 }
+@keyframes slidein {
+  from {
+    opacity: 0%;
+  }
 
+  to {
+    opacity: 100%;
+  }
+}
+hr {
+  border: solid 0.1rem;
+}
 .img {
-  height: max-content;
-  width: max-content;
+  height: 25rem;
+  width: 25rem;
 }

@@ -1,15 +1,18 @@
 .searchBox {
   background: #2f3640;
-  height: 6vh;
-  border-radius: 6vh;
-  padding: 1vh;
+  height: 4rem;
+  border-radius: 4rem;
+  padding: 1rem;
 }
 
 .searchBox:hover > .searchInput {
-  width: 15vh;
-  padding: 0 0.6vh;
+  width: 10rem;
+  padding: 0 0.6rem;
 }
-
+.searchInput:focus {
+  width: 10rem;
+  padding: 0 0.6rem;
+}
 .searchBox:hover > .searchButton {
   background: white;
   color: #2f3640;
@@ -18,14 +21,15 @@
 .searchButton {
   color: white;
   float: right;
-  width: 6vh;
-  height: 6vh;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   background: #2f3640;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.4s;
+  border-width: 0.3rem;
 }
 
 .searchInput {
@@ -35,13 +39,11 @@
   float: left;
   padding: 0;
   color: white;
-  font-size: 4vh;
+  font-size: 3rem;
   text-align: center;
   transition: 0.4s;
-  line-height: 4vh;
-  width: 0vh;
-  margin-top: 1vh;
-  margin-left: 1vh;
+  width: 0rem;
+  margin-left: 1rem;
 }
 
 .materialIcons {

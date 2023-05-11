@@ -9,14 +9,6 @@ const Nav = ({ onSearch }) => (
     </div>
 
     <div className={s.flexBox}>
-      <Link to="/about">
-        <button className={s.iconButton}>
-          <i className={s.materialIcons}>info</i>
-        </button>
-      </Link>
-    </div>
-
-    <div className={s.flexBox}>
       <Link to="/home">
         <button className={s.iconButton}>
           <i className={s.materialIcons}>home</i>
@@ -24,7 +16,18 @@ const Nav = ({ onSearch }) => (
       </Link>
     </div>
     <div className={s.flexBox}>
-      <SearchBar onSearch={onSearch} />
+      <Link to="/favorites">
+        <button className={s.iconButton}>
+          <h1>🤍</h1>
+        </button>
+      </Link>
+    </div>
+    <div className={s.flexBox}>
+      <Link to="/about">
+        <button className={s.iconButton}>
+          <i className={s.materialIcons}>info</i>
+        </button>
+      </Link>
     </div>
   </nav>
 );

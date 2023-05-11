@@ -1,8 +1,19 @@
 .container {
+  display: grid;
+  place-items: center;
+}
+.cardContainer {
   display: flex;
   margin-left: 0vw;
-  width: 100vw;
+  width: 100rem;
   transition: margin-left 1.5s ease;
   align-items: center;
-  margin-top: 20vh;
+  overflow: unset;
+}
+/* Button Container/**/
+.buttonContainer {
+  display: flex;
+  width: 100vw;
+  justify-content: space-evenly;
+  z-index: 100;
 }

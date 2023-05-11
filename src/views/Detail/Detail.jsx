@@ -3,6 +3,19 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import s from "./Detail.module.css";
 
+const dict = {
+  Alive: "Vivo",
+  Dead: "Muerto",
+  Human: "Humano",
+  Male: "Masculino",
+  Female: "Femenino",
+  unknown: "?",
+  "Earth (Replacement Dimension)": "Tierra (C-131)",
+};
+
+const translator = (string) =>
+  dict[string] || string.replace("Earth", "Tierra");
+
 const Detail = () => {
   const { id } = useParams();
   const [character, setCharacter] = useState({});
@@ -11,14 +24,12 @@ const Detail = () => {
     axios(`https://rickandmortyapi.com/api/character/${id}`).then(
       ({ data }) => {
         if (data.name) {
-          console.log(data);
           setCharacter(data);
         } else {
           window.alert("No hay personajes con ese ID");
         }
       }
     );
-    return setCharacter({});
   }, [id]);
 
   if (character.name)
@@ -28,19 +39,19 @@ const Detail = () => {
           <h1>{character.name}</h1>
           <hr></hr>
           <h2>
-            Estado: <i>{character.status}</i>
+            Estado: <i>{translator(character.status)}</i>
           </h2>
           <hr></hr>
           <h2>
-            Especie: <i>{character.species}</i>
+            Especie: <i>{translator(character.species)}</i>
           </h2>
           <hr></hr>
           <h2>
-            Género: <i>{character.gender}</i>
+            Género: <i>{translator(character.gender)}</i>
           </h2>
           <hr></hr>
           <h2>
-            Origen: <i>{character.origin.name}</i>
+            Origen: <i>{translator(character.origin.name)}</i>
           </h2>
         </div>
         <img className={s.img} src={character.image} alt={character.name} />

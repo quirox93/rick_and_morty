@@ -1,35 +1,26 @@
 .container {
-  width: 100%;
+  min-width: 50%;
   height: 20%;
   min-height: 30px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position: fixed;
-  top: 0;
   overflow: hidden;
-  box-shadow: 0 0 10px yellowgreen;
-  background-color: rgb(31, 31, 48);
-  background-image: linear-gradient(
-    270deg,
-    rgb(30, 40, 66),
-    rgba(53, 201, 221, 0.25),
-    rgba(53, 201, 221, 0.25),
-    rgba(53, 201, 221, 0.25),
-    rgba(53, 201, 221, 0.25),
-    rgb(30, 40, 66)
-  );
+  margin-bottom: 1rem;
 }
 .flexBox {
   flex: 1;
   display: flex;
   justify-content: center;
+  height: 100%;
+  align-items: center;
 }
+
 .iconButton {
   color: white;
   float: right;
-  width: 6vh;
-  height: 6vh;
+  width: 5rem;
+  height: 3rem;
   border-radius: 50%;
   background: #2f3640;
   display: flex;
@@ -37,6 +28,7 @@
   align-items: center;
   transition: 0.4s;
   cursor: pointer;
+  border-width: 0.3rem;
 }
 .iconButton:hover {
   background: white;
@@ -46,7 +38,7 @@
   font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
-  font-size: 4vh;
+  font-size: 2rem;
   line-height: 1;
   letter-spacing: normal;
   text-transform: none;
@@ -59,9 +51,9 @@
 .title {
   text-align: center;
   font-family: "Get Schwifty";
-  font-size: 3vw;
+  font-size: 3rem;
   color: #08bae3;
-  -webkit-text-stroke: 1px yellowgreen;
+  -webkit-text-stroke: 0.1rem yellowgreen;
   font-weight: 300;
-  text-shadow: 0 0 10px rgb(255, 204, 63);
+  text-shadow: 0 0 1rem rgb(255, 204, 63);
 }
