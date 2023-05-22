@@ -4,30 +4,27 @@ import SearchBar from "../SearchBar/SearchBar";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const Cards = ({ characters, setCharacters }) => {
+const Cards = (props) => {
+  const [characters, setCharacters] = props;
   //functions
   const onClose = (charId) => {
     let newCharacters = characters.filter(({ id }) => id !== charId);
     setCharacters(newCharacters);
-    if (margin < 175 * -~~((newCharacters.length - 1) / 4))
-      setMargin(175 * -~~((newCharacters.length - 1) / 4));
+    if (margin < 175 * -~~((newCharacters.length - 1) / 4)) setMargin(175 * -~~((newCharacters.length - 1) / 4));
   };
   const onSearch = (id) => {
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(
-      ({ data }) => {
-        if (data.name) {
-          if (characters.find(({ id }) => id == data.id))
-            window.alert("¡Ya existe el personaje!");
-          else {
-            let newCharacters = [...characters, data];
-            setCharacters((oldChars) => [...oldChars, data]);
-            setMargin(175 * -~~((newCharacters.length - 1) / 4));
-          }
-        } else {
-          window.alert("¡No hay personajes con este ID!");
+    axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+      if (data.name) {
+        if (characters.find(({ id }) => id == data.id)) window.alert("¡Ya existe el personaje!");
+        else {
+          let newCharacters = [...characters, data];
+          setCharacters((oldChars) => [...oldChars, data]);
+          setMargin(175 * -~~((newCharacters.length - 1) / 4));
         }
+      } else {
+        window.alert("¡No hay personajes con este ID!");
       }
-    );
+    });
   };
   //States
 
@@ -41,7 +38,7 @@ const Cards = ({ characters, setCharacters }) => {
     else setRDisplay("None");
     if (margin < 0) setLDisplay("Block");
     else setLDisplay("None");
-  }, [margin]);
+  }, [characters.length, margin]);
   const rigth = () => {
     let newValor = margin - 175;
     if (175 * -~~((characters.length - 1) / 4) > newValor) return;
@@ -56,7 +53,7 @@ const Cards = ({ characters, setCharacters }) => {
   return (
     <div className={s.container}>
       <div className={s.cardContainer} style={{ marginLeft: margin + "vw" }}>
-        {characters.map((e, i) => (
+        {characters.map((e) => (
           <div key={e.id}>
             <Card
               id={e.id}
@@ -73,11 +70,7 @@ const Cards = ({ characters, setCharacters }) => {
 
       <div className={s.buttonContainer}>
         <div>
-          <button
-            className="button-55"
-            onClick={left}
-            style={{ display: lDisplay }}
-          >
+          <button className="button-55" onClick={left} style={{ display: lDisplay }}>
             ◄
           </button>
         </div>
@@ -85,11 +78,7 @@ const Cards = ({ characters, setCharacters }) => {
           <SearchBar onSearch={onSearch} />
         </div>
         <div>
-          <button
-            className="button-55"
-            onClick={rigth}
-            style={{ display: rDisplay }}
-          >
+          <button className="button-55" onClick={rigth} style={{ display: rDisplay }}>
             ►
           </button>
         </div>

@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import SearchBar from "../SearchBar/SearchBar";
 import s from "./Nav.module.css";
 
-const Nav = ({ onSearch }) => (
+const Nav = () => (
   <nav className={s.container}>
     <div className={s.flexBox}>
       <h1 className={s.title}>Rick and Morty</h1>
