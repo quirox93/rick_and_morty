@@ -4,8 +4,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const Cards = (props) => {
-  const [characters, setCharacters] = props;
+const Cards = ({ characters, setCharacters }) => {
   //functions
   const onClose = (charId) => {
     let newCharacters = characters.filter(({ id }) => id !== charId);

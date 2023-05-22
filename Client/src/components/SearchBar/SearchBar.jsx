@@ -1,8 +1,7 @@
 import { useState } from "react";
 import s from "./SearchBar.module.css";
 
-const SearchBar = (props) => {
-  const [onSearch] = props;
+const SearchBar = ({ onSearch }) => {
   const [id, setId] = useState([]);
   const handleChange = (event) => setId(event.target.value);
   const handleClick = () => {
