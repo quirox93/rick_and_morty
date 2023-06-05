@@ -1,6 +1,6 @@
 const express = require("express");
 const server = express();
-const PORT = 3001;
+const PORT = process.env.PORT | 3001;
 const router = require("./routes/index");
 server.listen(PORT, () => {
   console.log("Server raised in port: " + PORT);
