@@ -13,13 +13,13 @@ const rootReducer = (state = initalState, { type, payload }) => {
   const actions = {
     [ADD_FAV]: {
       ...state,
-      myFavorites: [...all, payload],
-      allCharacters: [...all, payload],
+      myFavorites: payload,
+      allCharacters: payload,
     },
     [REMOVE_FAV]: {
       ...state,
-      myFavorites: all.filter(({ id }) => id != payload),
-      allCharacters: all.filter(({ id }) => id != payload),
+      myFavorites: payload,
+      allCharacters: payload,
     },
     [FILTER]: { ...state, myFavorites: all.filter(filterFn) },
     [ORDER]: { ...state, myFavorites: [...all].sort(sortFn) },

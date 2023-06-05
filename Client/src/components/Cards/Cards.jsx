@@ -12,7 +12,7 @@ const Cards = ({ characters, setCharacters }) => {
     if (margin < 175 * -~~((newCharacters.length - 1) / 4)) setMargin(175 * -~~((newCharacters.length - 1) / 4));
   };
   const onSearch = (id) => {
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+    axios(`http://localhost:3001/rickandmorty/characters/${id}`).then(({ data }) => {
       if (data.name) {
         if (characters.find(({ id }) => id == data.id)) window.alert("¡Ya existe el personaje!");
         else {
@@ -52,8 +52,8 @@ const Cards = ({ characters, setCharacters }) => {
   return (
     <div className={s.container}>
       <div className={s.cardContainer} style={{ marginLeft: margin + "vw" }}>
-        {characters.map((e) => (
-          <div key={e.id}>
+        {characters.map((e, i) => (
+          <div key={i}>
             <Card
               id={e.id}
               name={e.name}

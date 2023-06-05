@@ -5,25 +5,27 @@ import About from "./views/About/About";
 import Detail from "./views/Detail/Detail";
 import Form from "./components/Form/Form";
 import Favorites from "./components/Favorites/Favorites";
-
+import axios from "axios";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function App() {
   const [characters, setCharacters] = useState([]);
   const [access, setAccess] = useState(false);
-  const EMAIL = "quirox01@gmail.com";
-  const PASSWORD = "test123";
   const navigate = useNavigate();
+
   function login(userData) {
-    if (userData.password === PASSWORD && userData.email === EMAIL) {
-      setAccess(true);
-      navigate("/home");
-    }
+    const { email, password } = userData;
+    const URL = "http://localhost:3001/rickandmorty/login/";
+    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+      const { access } = data;
+      setAccess(data);
+      access && navigate("/home");
+    });
   }
   useEffect(() => {
     !access && navigate("/");
-  }, [access, navigate]);
+  }, [access]);
 
   return (
     <div className="App">

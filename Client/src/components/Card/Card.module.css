@@ -41,12 +41,12 @@
   opacity: 100%;
 }
 
-.dead:hover {
+.muerto:hover {
   border-color: rgb(141, 9, 9);
   box-shadow: 0 0 1rem #ff0000;
 }
 
-.alive:hover {
+.vivo:hover {
   border-color: rgb(0, 224, 56);
   box-shadow: 0 0 1rem rgb(0, 224, 56);
 }
