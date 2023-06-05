@@ -3,7 +3,7 @@ import s from "./Cards.module.css";
 import SearchBar from "../SearchBar/SearchBar";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+const URL = import.meta.env.VITE_BACKEND_URL;
 const Cards = ({ characters, setCharacters }) => {
   //functions
   const onClose = (charId) => {
@@ -12,7 +12,7 @@ const Cards = ({ characters, setCharacters }) => {
     if (margin < 175 * -~~((newCharacters.length - 1) / 4)) setMargin(175 * -~~((newCharacters.length - 1) / 4));
   };
   const onSearch = (id) => {
-    axios(`http://localhost:3001/rickandmorty/characters/${id}`).then(({ data }) => {
+    axios(`${URL}/rickandmorty/characters/${id}`).then(({ data }) => {
       if (data.name) {
         if (characters.find(({ id }) => id == data.id)) window.alert("¡Ya existe el personaje!");
         else {

@@ -8,7 +8,7 @@ import Favorites from "./components/Favorites/Favorites";
 import axios from "axios";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-
+const URL = import.meta.env.VITE_BACKEND_URL;
 function App() {
   const [characters, setCharacters] = useState([]);
   const [access, setAccess] = useState(false);
@@ -16,8 +16,7 @@ function App() {
 
   function login(userData) {
     const { email, password } = userData;
-    const URL = "http://localhost:3001/rickandmorty/login/";
-    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+    axios(URL + `/login?email=${email}&password=${password}`).then(({ data }) => {
       const { access } = data;
       setAccess(data);
       access && navigate("/home");

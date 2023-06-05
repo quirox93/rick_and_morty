@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import s from "./Detail.module.css";
-
+const URL = import.meta.env.VITE_BACKEND_URL;
 const Detail = () => {
   const { id } = useParams();
   const [character, setCharacter] = useState({});
 
   useEffect(() => {
-    axios(`http://localhost:3001/rickandmorty/characters/${id}`).then(({ data }) => {
+    axios(`${URL}/rickandmorty/characters/${id}`).then(({ data }) => {
       if (data.name) {
         setCharacter(data);
       } else {
