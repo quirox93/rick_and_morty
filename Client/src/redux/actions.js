@@ -7,7 +7,7 @@ import axios from "axios";
 const URL = import.meta.env.VITE_BACKEND_URL;
 // ACTION | addFav
 export const addFav = (character) => {
-  const endpoint = URL + "/fav";
+  const endpoint = URL + "/rickandmorty/fav";
   return (dispatch) => {
     axios.post(endpoint, character).then(({ data }) => {
       return dispatch({
@@ -19,7 +19,7 @@ export const addFav = (character) => {
 };
 
 export const removeFav = (id) => {
-  const endpoint = URL + "/fav/" + id;
+  const endpoint = URL + "/rickandmorty/fav/" + id;
   return (dispatch) => {
     axios.delete(endpoint).then(({ data }) => {
       return dispatch({

@@ -16,7 +16,7 @@ function App() {
 
   function login(userData) {
     const { email, password } = userData;
-    axios(URL + `/login?email=${email}&password=${password}`).then(({ data }) => {
+    axios(URL + `/rickandmorty/login?email=${email}&password=${password}`).then(({ data }) => {
       const { access } = data;
       setAccess(data);
       access && navigate("/home");
