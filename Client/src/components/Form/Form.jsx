@@ -1,53 +1,35 @@
-import { useState } from "react";
-import { validations } from "../../Utils/validation";
+import useLogin from "./useLogin";
+import s from "./Form.module.css";
 
 const Form = ({ login }) => {
-  const [userData, setUserData] = useState({
-    email: "",
-    password: "",
-  });
-
-  const [errors, setErrors] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    const newUserData = {
-      ...userData,
-      [name]: value,
-    };
-    setUserData(newUserData);
-    const errors = validations(newUserData);
-    setErrors(errors);
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    login(userData);
-  };
+  const { handleSubmit, handleChange, userData, errors } = useLogin(login);
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Email:</label>
+    <form className={s.form} onSubmit={handleSubmit}>
+      <div className={s.email}>
         <input
+          placeholder="Email"
           type="text"
           name="email"
           value={userData.email}
           onChange={handleChange}
+          className={errors.email && s.error || s.normal}
         />
-        {errors.email}
+        <p>{errors.email}</p>
       </div>
-      <div>
-        <label>Password:</label>
+      <div className={s.password}>
         <input
+          placeholder="Password"
           type="text"
           name="password"
           value={userData.password}
           onChange={handleChange}
+          className={errors.password && s.error || s.normal}
         />
+        <p>{errors.password}</p>
       </div>
-      <button type="submit"></button>
+      <div className={errors.submit && s.hidden}>
+        <button type="submit">Ingresar</button>
+      </div>
     </form>
   );
 };

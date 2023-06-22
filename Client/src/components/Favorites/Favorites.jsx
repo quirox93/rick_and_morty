@@ -1,33 +1,19 @@
 import Cards from "../Cards/Cards";
-import { connect, useDispatch } from "react-redux";
-import { orderCards, filterCards } from "../../redux/actions";
-import { useState } from "react";
+import useFilter from "./useFilter";
 
-const Favorites = ({ myFavorites }) => {
-  const dispatch = useDispatch();
-  const [orderValue, setOrderValue] = useState("");
-  const [genderValue, setgenderValue] = useState("");
-  const handleOrder = (e) => {
-    setgenderValue("");
-    setOrderValue(e.target.value);
-    dispatch(orderCards(e.target.value));
-  };
-  const handleFilter = (e) => {
-    setOrderValue("");
-    setgenderValue(e.target.value);
-    dispatch(filterCards(e.target.value));
-  };
+const Favorites = () => {
+  const { myFavorites, values, handler } = useFilter();
 
   return (
     <div>
-      <select value={orderValue} onChange={handleOrder}>
+      <select name="orderCards" value={values.orderCards} onChange={handler}>
         <option value="" disabled>
           Orden
         </option>
         <option value="A">Ascendente</option>
         <option value="D">Descendente</option>
       </select>
-      <select value={genderValue} onChange={handleFilter}>
+      <select name="filterCards" value={values.filterCards} onChange={handler}>
         <option value="" disabled>
           Género
         </option>
@@ -41,10 +27,4 @@ const Favorites = ({ myFavorites }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    myFavorites: state.myFavorites,
-  };
-};
-
-export default connect(mapStateToProps, null)(Favorites);
+export default Favorites;

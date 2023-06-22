@@ -14,28 +14,49 @@ function App() {
   const [access, setAccess] = useState(false);
   const navigate = useNavigate();
 
-  function login(userData) {
-    const { email, password } = userData;
-    axios(URL + `/rickandmorty/login?email=${email}&password=${password}`).then(({ data }) => {
+  const login = async (userData) => {
+    try {
+      const { email, password } = userData;
+      const { data } = await axios(
+        `${URL}/rickandmorty/login?email=${email}&password=${password}`
+      );
       const { access } = data;
-      setAccess(data);
+      setAccess(access);
       access && navigate("/home");
-    });
-  }
+      if (!access) window.alert("Usuario o contraseña incorrecta.");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   useEffect(() => {
-    console.log(import.meta.env.VITE_BACKEND_URL);
     !access && navigate("/");
   }, [access]);
 
   return (
     <div className="App">
-      <Nav />
+      {access && <Nav />}
       <Routes>
-        <Route path="/home" element={<Cards characters={characters} setCharacters={setCharacters} />}></Route>
         <Route path="/" element={<Form login={login} />}></Route>
-        <Route path="detail/:id" element={<Detail />}></Route>
-        <Route path="/about" element={<About />}></Route>
-        <Route path="/favorites" element={<Favorites />}></Route>
+        {!access && <Route path="/*" element={<Form login={login} />}></Route>}
+
+        {access && (
+          <>
+            <Route
+              path="/home"
+              element={
+                <Cards
+                  characters={characters}
+                  access={access}
+                  setCharacters={setCharacters}
+                />
+              }
+            ></Route>
+            <Route path="detail/:id" element={<Detail />}></Route>
+            <Route path="/favorites" element={<Favorites />}></Route>
+            <Route path="/about" element={<About />}></Route>
+          </>
+        )}
       </Routes>
     </div>
   );

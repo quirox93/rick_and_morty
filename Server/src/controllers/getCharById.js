@@ -13,13 +13,13 @@ const dict = {
   "Mythological Creature": "Criatura mitológica",
   "Earth (Replacement Dimension)": "Tierra (C-131)",
 };
-const translator = (string) => dict[string] || string.replace("Earth", "Tierra");
+const translator = (string) =>
+  dict[string] || string.replace("Earth", "Tierra");
 
 const getCharById = async (req, res) => {
   try {
     const { id } = req.params;
     const { data } = await axios.get(URL + id);
-
     const char = {
       id: data.id,
       status: translator(data.status),
@@ -31,8 +31,8 @@ const getCharById = async (req, res) => {
     };
     res.status(200).json(char);
   } catch (error) {
-    if (error.response.status === 404) {
-      res.status(404).send("Not found");
+    if (error.response?.status === 404) {
+      res.status(404).json({ message: "Personaje no encontrado." });
     } else {
       res.status(500).json({ error: error.message });
     }

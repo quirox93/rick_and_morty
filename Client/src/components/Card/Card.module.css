@@ -15,7 +15,8 @@
   animation-name: slidein;
   animation-duration: 1s;
   margin: 2.5rem;
-  -webkit-box-reflect: below 0 linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4));
+  -webkit-box-reflect: below 0
+    linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4));
 }
 
 @keyframes slidein {
@@ -34,13 +35,18 @@
   box-shadow: 0 0 1rem rgb(255, 204, 63);
 }
 .card .name {
-  opacity: 0;
-  transition: 1s ease;
-}
-.card:hover .name {
   opacity: 100%;
 }
 
+@media (orientation: landscape) {
+  .card .name {
+    opacity: 0;
+    transition: 1s ease;
+  }
+  .card:hover .name {
+    opacity: 100%;
+  }
+}
 .muerto:hover {
   border-color: rgb(141, 9, 9);
   box-shadow: 0 0 1rem #ff0000;

@@ -6,7 +6,6 @@ const initalState = {
 };
 const rootReducer = (state = initalState, { type, payload }) => {
   const sortFn = (a, b) => (payload === "A" ? a.id - b.id : b.id - a.id);
-  //const sortFn = (a, b) => (a.id - b.id) * -(payload === "A");
   const filterFn = ({ gender }) => gender === payload;
   const all = state.allCharacters;
 

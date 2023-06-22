@@ -7,7 +7,8 @@ import { connect } from "react-redux";
 
 const Card = (props) => {
   // Animacion Cerrar
-  const animationEnd = (event) => event.animationName.includes("slideOut") && props.onClose();
+  const animationEnd = (event) =>
+    event.animationName.includes("slideOut") && props.onClose();
 
   // Estados
   const [closeClass, setCloseClass] = useState("");
@@ -39,7 +40,10 @@ const Card = (props) => {
 
   return (
     <Link to={`/detail/${props.id}`}>
-      <div className={`${s.card} ${s[props.status.toLowerCase()]} ${closeClass}`} onAnimationEnd={animationEnd}>
+      <div
+        className={`${s.card} ${s[props.status.toLowerCase()]} ${closeClass}`}
+        onAnimationEnd={animationEnd}
+      >
         <div className={s.name}>
           {isFav ? (
             <button className={s.closeButton} onClick={handleFavorite}>
