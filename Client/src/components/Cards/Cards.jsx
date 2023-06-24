@@ -45,6 +45,7 @@ const Cards = ({ characters, setCharacters, access }) => {
     if (175 * -~~((characters.length - 1) / 4) > newValor) return;
     setMargin(newValor);
   };
+  
   const left = () => {
     let newValor = margin + 175;
     if (newValor > 0) return;

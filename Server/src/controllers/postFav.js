@@ -7,6 +7,7 @@ const postFavorite = async (req, res) => {
       return res.status(401).json({ message: "Faltan datos" });
 
     const user = await User.findOne({ where: { id: access } });
+
     const [favorite] = await Favorite.findOrCreate({
       where: {
         id: id,
@@ -20,6 +21,7 @@ const postFavorite = async (req, res) => {
       },
     });
     await favorite.addUsers([user.id]);
+    
     const users = await User.findOne({
       where: { id: access },
       include: { model: Favorite, as: "Favorites" },

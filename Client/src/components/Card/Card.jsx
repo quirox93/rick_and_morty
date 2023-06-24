@@ -24,7 +24,7 @@ const Card = (props) => {
     event.preventDefault();
     if (isFav) {
       setIsFav(false);
-      props.removeFav(props.id);
+      props.removeFav(props.access, props.id);
     } else {
       setIsFav(true);
       props.addFav(props);
@@ -70,8 +70,8 @@ const mapDispatchToProps = (dispatch) => {
     addFav: (char) => {
       dispatch(addFav(char));
     },
-    removeFav: (id) => {
-      dispatch(removeFav(id));
+    removeFav: (access, id) => {
+      dispatch(removeFav(access, id));
     },
   };
 };

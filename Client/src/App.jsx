@@ -53,7 +53,10 @@ function App() {
               }
             ></Route>
             <Route path="detail/:id" element={<Detail />}></Route>
-            <Route path="/favorites" element={<Favorites />}></Route>
+            <Route
+              path="/favorites"
+              element={<Favorites access={access} />}
+            ></Route>
             <Route path="/about" element={<About />}></Route>
           </>
         )}

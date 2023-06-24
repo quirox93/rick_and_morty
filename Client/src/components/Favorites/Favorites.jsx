@@ -1,8 +1,8 @@
 import Cards from "../Cards/Cards";
 import useFilter from "./useFilter";
 
-const Favorites = () => {
-  const { myFavorites, values, handler } = useFilter();
+const Favorites = (props) => {
+  const { myFavorites, values, handler } = useFilter(props.access);
 
   return (
     <div>
@@ -22,7 +22,7 @@ const Favorites = () => {
         <option value="Sin género">Sin genero</option>
         <option value="Desconocido">Desconocido</option>
       </select>
-      <Cards characters={myFavorites} />;
+      <Cards characters={myFavorites} access={props.access} />;
     </div>
   );
 };
